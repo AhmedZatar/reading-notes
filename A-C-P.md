@@ -12,4 +12,6 @@ A-C-P steps :
 6. then write what you change by typing **git commit -m "what you change" ***
 7. finally you will write **git push origin main** then put your username and password
 
+[go back to main page](https://ahmedzatar.github.io/reading-notes/)
+
 

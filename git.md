@@ -10,3 +10,5 @@ i learned some of git commands like :
 - git add .
 - git puch origin main
 - git clone
+
+[go back to main page](https://ahmedzatar.github.io/reading-notes/)

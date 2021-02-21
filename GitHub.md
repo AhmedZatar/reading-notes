@@ -22,4 +22,6 @@ by chosen the file than press edit.
 - make webpage link for my repositories and change theme
 
 by chosen settings then scroll down to GitHub Pages and select branch and you can change theme by chosen Theme Chooser
+
+[go back to main page](https://ahmedzatar.github.io/reading-notes/)
  
