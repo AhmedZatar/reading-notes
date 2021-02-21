@@ -3,6 +3,7 @@
 > - A growth mindset refers to a mindset that believes that traits, abilities, competencies and talents are not static, but that they are developed, learned and changed.
 
 `A growth mindset is synonymous with a love of learning `
+
 `By contrast, in a fixed mindset`
 
 Here’s a simple illustration highlighting the differences between a fixed and a growth mindset:
