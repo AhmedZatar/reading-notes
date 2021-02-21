@@ -8,6 +8,6 @@
 Here’s a simple illustration highlighting the differences between a fixed and a growth mindset:
 ![Here’s a simple illustration highlighting the differences between a fixed and a growth mindset:](https://3kllhk1ibq34qk6sp3bhtox1-wpengine.netdna-ssl.com/wp-content/uploads/NewGrowthMindset2.png)
 ### How keep yourself in a growth mindset
-1- fAEFEG
-2- GESGesg
-3- dxghshG
+1. fAEFEG
+2. GESGesg
+3. dxghshG
