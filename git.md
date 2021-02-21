@@ -6,3 +6,4 @@ i learned some of git commands like :
 - git commit
 - git add .
 - git puch origin main
+- git clone
