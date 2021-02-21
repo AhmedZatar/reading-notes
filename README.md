@@ -8,7 +8,9 @@
 
 Here’s a simple illustration highlighting the differences between a fixed and a growth mindset:
 ![Here’s a simple illustration highlighting the differences between a fixed and a growth mindset:](https://3kllhk1ibq34qk6sp3bhtox1-wpengine.netdna-ssl.com/wp-content/uploads/NewGrowthMindset2.png)
-### How keep yourself in a growth mindset
-1. fAEFEG
-2. GESGesg
-3. dxghshG
+### How keep yourself in a growth mindset in three way
+1. Learn from your and other people’s mistakes.
+2. Make a new goal for every goal accomplished.
+3. Try different learning tactics
+
+
