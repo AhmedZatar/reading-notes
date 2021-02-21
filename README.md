@@ -1,7 +1,7 @@
 # Welcome to my first Repository
  Hello my name is Ahmed Zatar i am 23 years old i graduated from Middle East University as Civil Engineer and now i am studying software development at ASAC.
 
-[This is my profile on github](https://github.com/AhmedZatar)
+This is my profile on github[click here.](https://github.com/AhmedZatar)
 
 ### What is a growth mindset ?
 > - A growth mindset refers to a mindset that believes that traits, abilities, competencies and talents are not static, but that they are developed, learned and changed.
