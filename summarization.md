@@ -19,7 +19,7 @@ Markdown That i learned it :
 6. > - and this one
 
 7. make an order list and unordered list
-8.i learned some of git commands like : 
+8. i learned some of git commands like : 
 
 - git status
 - git add
