@@ -1,4 +1,6 @@
-# Welcome to my first Repository 
+# Welcome to my first Repository
+ Hello my name is Ahmed Zatar i am 23 years old i graduated from Middle East University as Civil Engineer and now i am studying software development at ASAC.
+
 ### What is a growth mindset ?
 > - A growth mindset refers to a mindset that believes that traits, abilities, competencies and talents are not static, but that they are developed, learned and changed.
 
@@ -11,6 +13,8 @@ Here’s a simple illustration highlighting the differences between a fixed and 
 ### How keep yourself in a growth mindset in three way
 1. Learn from your and other people’s mistakes.
 2. Make a new goal for every goal accomplished.
-3. Try different learning tactics
+3. Try different learning tactics.
+
+
 
 
