@@ -1,2 +1,3 @@
 # Welcome to my first Repository 
-### what is the growth mindset ??
+### what is a growth mindset ??
+A growth mindset refers to a mindset that believes that traits, abilities, competencies and talents are not static, but that they are developed, learned and changed.
