@@ -13,7 +13,9 @@ Markdown That i learned it :
 
 4. *learned making italic text like this*
 5. Put some image 
- 
-6. > - and this one ![Put some image](https://mena-innovation.com/2019/wp-content/uploads/2019/08/LUCT-600x400.jpg) 
+
+ ![Put some image](https://mena-innovation.com/2019/wp-content/uploads/2019/08/LUCT-600x400.jpg)
+
+6. > - and this one  
 7. make an order list and unordered list
 
