@@ -17,6 +17,14 @@ Here’s a simple illustration highlighting the differences between a fixed and 
 2. Make a new goal for every goal accomplished.
 3. Try different learning tactics.
 
+# Table of Contents
+
+| Subject | The link |
+| --- | --- |
+| Markdown | [Press Here!](https://ahmedzatar.github.io/reading-notes/Markdown) |
+| GitHub | [Press Here!](https://ahmedzatar.github.io/reading-notes/GitHub) |
+| git | [Press Here!](https://ahmedzatar.github.io/reading-notes/git) |
+| A-C-P | [Press Here!](https://ahmedzatar.github.io/reading-notes/A-C-P) |
 
 
 
