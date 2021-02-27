@@ -1,7 +1,14 @@
 # Welcome to my first Repository
  Hello my name is **Ahmed Zatar** i am 23 years old i graduated from Middle East University as Civil Engineer and now i am studying software development at ASAC.
-
+ 
 This is my profile on github [click here.](https://github.com/AhmedZatar)
+
+# Table of Contents
+
+| Subject | The link |
+| --- | --- |
+| Code102 | [Press Here!](https://ahmedzatar.github.io/reading-notes/102) |
+| Code201 | [Press Here!](https://ahmedzatar.github.io/reading-notes/201) |
 
 ### What is a growth mindset ?
 > - A growth mindset refers to a mindset that believes that traits, abilities, competencies and talents are not static, but that they are developed, learned and changed.
@@ -17,14 +24,8 @@ Here’s a simple illustration highlighting the differences between a fixed and 
 2. Make a new goal for every goal accomplished.
 3. Try different learning tactics.
 
-# Table of Contents
 
-| Subject | The link |
-| --- | --- |
-| Markdown | [Press Here!](https://ahmedzatar.github.io/reading-notes/Markdown) |
-| GitHub | [Press Here!](https://ahmedzatar.github.io/reading-notes/GitHub) |
-| git | [Press Here!](https://ahmedzatar.github.io/reading-notes/git) |
-| A-C-P | [Press Here!](https://ahmedzatar.github.io/reading-notes/A-C-P) |
+
 
 
 
