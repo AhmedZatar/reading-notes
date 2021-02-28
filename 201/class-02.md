@@ -14,6 +14,7 @@ If there are further sections
 under the subheadings then the
 < h3 > element is used, and so
 on...
+
 ![1](https://www7.0zz0.com/2021/02/28/23/958550815.png)
 
 ## Paragraphs
@@ -45,6 +46,7 @@ contain characters that should
 be subscript. It is commonly
 used with foot notes or chemical
 formulas
+
 ![2](https://www11.0zz0.com/2021/02/28/23/712240617.png)
 
 ## Line Breaks & Horizontal Rules
@@ -99,6 +101,7 @@ an acronym, then the < abbr >
 element can be used. A title
 attribute on the opening tag is
 used to specify the full term.
+
 ![4](https://www3.0zz0.com/2021/02/28/23/730888365.png)
 
 ## Changes to Content
@@ -115,6 +118,7 @@ should not be deleted).
 Visually the content of an < s >
 element will usually be displayed
 with a line through the center.
+
 ![5](https://www8.0zz0.com/2021/02/28/23/713104686.png)
 
 # How To Add CSS
