@@ -230,3 +230,11 @@ The do/while loop is a variant of the while loop. This loop will execute the cod
 The example below uses a do/while loop. The loop will always be executed at least once, even if the condition is false, because the code block is executed before the condition is tested:
 
 ![12](https://www5.0zz0.com/2021/03/01/20/461939321.png)
+
+
+## References
+> JAVASCRIPT & JQUERY
+Interactive Front-End Web Development
+JON DUCKETT
+
+> from https://www.w3schools.com/
