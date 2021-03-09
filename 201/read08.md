@@ -141,4 +141,14 @@ element.
 
 ![9](https://www12.0zz0.com/2021/03/08/22/390205062.png)
 
+## Creating Multi-Column Layouts with Floats
+
+1. width : This sets the width of the
+columns.
+2. float : This positions the columns next
+to each other.
+3. margin : This creates a gap between the
+columns.
+
+
 
