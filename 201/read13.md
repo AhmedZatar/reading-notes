@@ -58,3 +58,4 @@ The most important part of this function is the caveat that I mentioned earlier 
 # References
 
 > http://diveinto.html5doctor.com/storage.html
+.
