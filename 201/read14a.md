@@ -83,4 +83,3 @@ In the example above, the background property is identified in the transition-pr
 > https://learn.shayhowe.com/advanced-html-css/css-transforms/
 
 > https://learn.shayhowe.com/advanced-html-css/transitions-animations/
-.s
