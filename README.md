@@ -11,6 +11,8 @@ This is my profile on github [click here.](https://github.com/AhmedZatar)
 | --- | --- |
 | Code102 | [Press Here!](https://ahmedzatar.github.io/reading-notes/102) |
 | Code201 | [Press Here!](https://ahmedzatar.github.io/reading-notes/201) |
+| Code301 | [Press Here!](https://ahmedzatar.github.io/reading-notes/301) |
+| Code401 | [Press Here!](https://ahmedzatar.github.io/reading-notes/401) |
 
 ### What is a growth mindset ?
 > - A growth mindset refers to a mindset that believes that traits, abilities, competencies and talents are not static, but that they are developed, learned and changed.
