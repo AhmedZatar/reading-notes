@@ -34,7 +34,7 @@ O(N²) represents an algorithm whose performance is directly proportional to the
 
 
 bool ContainsDuplicates(IList<string> elements)
-{
+
     for (var outer = 0; outer < elements.Count; outer++) 
     {
         for (var inner = 0; inner < elements.Count; inner++) 
@@ -46,7 +46,7 @@ bool ContainsDuplicates(IList<string> elements)
         }
     }    
     return false;
-}
+
 
 ## O(2^N)
 
@@ -54,11 +54,11 @@ O(2^N) denotes an algorithm whose growth doubles with each addition to the input
 
 
 int Fibonacci(int number)
-{
+
     if (number <= 1) return number;
        
     return Fibonacci(number - 2) + Fibonacci(number - 1); 
-}
+
 
 ## Logarithms
 
@@ -152,5 +152,3 @@ With a mutable value, you can change the value directly, usually with a method o
 `nums = [1, 2, 3]`
 
 `nums.append(4)`
-
--
