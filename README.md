@@ -9,10 +9,10 @@ This is my profile on github [click here.](https://github.com/AhmedZatar)
 
 | Subject | The link |
 | --- | --- |
-| Code102 | [Press Here!](https://ahmedzatar.github.io/reading-notes/102) |
-| Code201 | [Press Here!](https://ahmedzatar.github.io/reading-notes/201) |
-| Code301 | [Press Here!](https://ahmedzatar.github.io/reading-notes/301) |
-| Code401 | [Press Here!](https://ahmedzatar.github.io/reading-notes/401) |
+| Code 102 - Intro to Software Development | [Press Here!](https://ahmedzatar.github.io/reading-notes/102) |
+| Code 201 - Foundations of Software Development | [Press Here!](https://ahmedzatar.github.io/reading-notes/201) |
+| Code 301 - Intermediate Software Development | [Press Here!](https://ahmedzatar.github.io/reading-notes/301) |
+| Code 401 - Advanced Software Development | [Press Here!](https://ahmedzatar.github.io/reading-notes/401) |
 
 
 
