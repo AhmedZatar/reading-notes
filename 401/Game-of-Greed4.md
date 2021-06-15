@@ -1,0 +1,186 @@
+# Dunder or magic methods in Python
+
+Dunder or magic methods in Python are the methods having two prefix and suffix underscores in the method name. Dunder here means “Double Under (Underscores)”. These are commonly used for operator overloading. Few examples for magic methods are: __ init __ , __ add __ , __ len __, __ repr __ etc.
+
+The __ init __ method for initialization is invoked without any call, when an instance of a class is created, like constructors in certain other programming languages such as C++, Java, C#, PHP etc. These methods are the reason we can add two strings with ‘+’ operator without any explicit typecasting.
+
+Here’s a simple implementation :
+
+```
+# declare our own string class
+class String:
+      
+    # magic method to initiate object
+    def __init__(self, string):
+        self.string = string
+          
+# Driver Code
+if __name__ == '__main__':
+      
+    # object creation
+    string1 = String('Hello')
+  
+    # print object location
+    print(string1)
+```
+
+Output :
+
+```
+<__main__.String object at 0x7fe992215390>
+```
+
+The above snippet of code prints only the memory address of the string object. Let’s add a __ repr __ method to represent our object.
+
+```
+# declare our own string class
+class String:
+      
+    # magic method to initiate object
+    def __init__(self, string):
+        self.string = string
+          
+    # print our string object
+    def __repr__(self):
+        return 'Object: {}'.format(self.string)
+  
+# Driver Code
+if __name__ == '__main__':
+      
+    # object creation
+    string1 = String('Hello')
+  
+    # print object location
+    print(string1)
+```
+
+Output:
+
+```
+Object: Hello
+```
+
+If we try to add a string to it :
+
+```
+
+# declare our own string class
+class String:
+      
+    # magic method to initiate object
+    def __init__(self, string):
+        self.string = string
+          
+    # print our string object
+    def __repr__(self):
+        return 'Object: {}'.format(self.string)
+  
+# Driver Code
+if __name__ == '__main__':
+      
+    # object creation
+    string1 = String('Hello')
+      
+    # concatenate String object and a string
+    print(string1 +' world')
+
+```
+Output :
+
+```
+TypeError: unsupported operand type(s) for +: 'String' and 'str'
+```
+Now add __ add __ method to String class :
+
+```
+# declare our own string class
+class String:
+      
+    # magic method to initiate object
+    def __init__(self, string):
+        self.string = string 
+          
+    # print our string object
+    def __repr__(self):
+        return 'Object: {}'.format(self.string)
+          
+    def __add__(self, other):
+        return self.string + other
+  
+# Driver Code
+if __name__ == '__main__':
+      
+    # object creation
+    string1 = String('Hello')
+      
+    # concatenate String object and a string
+    print(string1 +' Geeks')
+```
+
+Output :
+
+```
+Hello Geeks
+```
+
+# Basic Statistics in Python — Probability
+When studying statistics for data science, you will inevitably have to learn about probability. It is easy lose yourself in the formulas and theory behind probability, but it has essential uses in both working and daily life. We’ve previously discussed some basic concepts in descriptive statistics; now we’ll explore how statistics relates to probability.
+
+
+## Prerequisites:
+
+Similar to the previous post, this article assumes no prior knowledge of statistics, but does require at least a general knowledge of Python and general data science worflows. If you are uncomfortable with for loops and lists, I recommend covering them briefly in our introductory Python course before progressing.
+
+## What is probability?
+
+At the most basic level, probability seeks to answer the question, “What is the chance of an event happening?” An event is some outcome of interest. To calculate the chance of an event happening, we also need to consider all the other events that can occur. The quintessential representation of probability is the humble coin toss. In a coin toss the only events that can happen are:
+
+1. Flipping a heads
+2. Flipping a tails
+
+These two events form the sample space, the set of all possible events that can happen. To calculate the probability of an event occurring, we count how many times are event of interest can occur (say flipping heads) and dividing it by the sample space. Thus, probability will tell us that an ideal coin will have a 1-in-2 chance of being heads or tails. By looking at the events that can occur, probability gives us a framework for making predictions about how often events will happen. However, even though it seems obvious, if we actually try to toss some coins, we’re likely to get an abnormally high or low counts of heads every once in a while. If we don’t want to make the assumption that the coin is fair, what can we do? We can gather data! We can use statistics to calculate probabilities based on observations from the real world and check how it compares to the ideal.
+
+## From statistics to probability
+
+Our data will be generated by flipping a coin 10 times and counting how many times we get heads. We will call a set of 10 coin tosses a trial. Our data point will be the number of heads we observe. We may not get the “ideal” 5 heads, but we won’t worry too much since one trial is only one data point. If we perform many, many trials, we expect the average number of heads over all of our trials to approach the 50%. The code below simulates 10, 100, 1000, and 1000000 trials, and then calculates the average proportion of heads observed. Our process is summarized in the image below as well.
+
+![1](https://i.imgur.com/GtbawRt.jpg)
+
+
+## The data and the distribution
+
+Before we can tackle the question of “which wine is better than average,” we have to mind the nature of our data. Intuitively, we’d like to use the scores of the wines to compare groups, but there comes a problem: the scores usually fall in a range. How do we compare groups of scores between types of wines and know with some degree of certainty that one is better than the other? Enter the normal distribution. The normal distribution refers to a particularly important phenomenon in the realm of probability and statistics. The normal distribution looks like this:
+
+![2](https://i.imgur.com/3vDS2Au.png)
+
+The most important qualities to notice about the normal distribution is its symmetry and its shape. We’ve been calling it a distribution, but what exactly is being distributed? It depends on the context. In probability, the normal distribution is a particular distribution of the probability across all of the events. The x-axis takes on the values of events we want to know the probability of. The y-axis is the probability associated with each event, from 0 to 1.
+
+We haven’t discussed probability distributions in-depth here, but know that the normal distribution is a particularly important kind of probability distribution. In statistics, it is the values of our data that are being distributed. Here, the x-axis is the values of our data, and the y-axis is the count of each of these values. Here’s the same picture of the normal distribution, but labelled according to a probability and statistical context:
+
+![3](https://i.imgur.com/egqrj58.jpg)
+
+## Revisiting the normal
+
+The normal distribution is significant to probability and statistics thanks to two factors: the Central Limit Theorem and the Three Sigma Rule.
+
+## Central Limit Theorem
+
+In the previous section, we demonstrated that if we repeated our 10-toss trials many, many times, the average heads-count of all of these trials will approach the 50% we expect from an ideal coin. With more trials, the closer the average of these trials approach the true probability, even if the individual trials themselves are imperfect. This idea is a key tenet of the Central Limit Theorem. In our coin-tossing example, a single trial of 10 throws produces a single estimate of what probability suggests should happen (5 heads). We call it an estimate because we know that it won’t be perfect (i.e. we won’t get 5 heads every time).
+
+If we make many estimates, the Central Limit Theorem dictates that the distribution of these estimates will look like a normal distribution. The zenith of this distribution will line up with the true value that the estimates should take on. In statistics, the peak of the normal distribution lines up with the mean, and that’s exactly what we observed. Thus, given multiple “trials” as our data, the Central Limit Theorem suggests that we can hone in on the theoretical ideal given by probability, even when we don’t know the true probability. Central Limit Theorem lets us know that the average of many trials means will approach the true mean, the Three Sigma Rule will tell us how much the data will be spread out around this mean.
+
+## Three Sigma Rule
+
+The Three Sigma rule, also known as the empirical rule or 68-95-99.7 rule, is an expression of how many of our observations fall within a certain distance of the mean. Remember that the standard deviation (a.k.a. “sigma”) is the average distance an observation in the data set is from the mean. The Three Sigma rule dictates that given a normal distribution, 68% of your observations will fall between one standard deviation of the mean. 95% will fall within two, and 99.7% will fall within three. A lot of complicated math goes into the derivation of these values, and as such, is out of the scope of this article. The key takeaway is to know that the Three Sigma Rule enables us to know how much data is contained under different intervals of a normal distribution. The picture below is a great summary of what the Three Sigma Rule represents.
+
+![4](https://i.imgur.com/Mt3RyE0.png)
+
+## Z-score
+The Z-score is a simple calculation that answers the question, “Given a data point, how many standard deviations is it away from the mean?” The equation below is the Z-score equation. Z-score
+
+![5](https://i.imgur.com/3TuDF4G.jpg)
+
+By itself, the Z-score doesn’t provide much information to you. It gains the most value when compared against a Z-table, which tabulates the cumulative probability of a standard normal distribution up until a given Z-score. A standard normal is a normal distribution with a mean of 0 and a standard deviation of 1. The Z-score lets us reference this the Z-table even if our normal distribution is not standard. The cumulative probability is the sum of the probabilities of all values occurring, up until a given point.
+
+An easy example is the mean itself. The mean is the exact middle of the normal distribution, so we know that the sum of all probabilites of getting values from the left side up until the mean is 50%. The values from the Three Sigma Rule actually come up if you try to calculate the cumulative probability between standard deviations. The picture below provides a visualization of the cumulative probability.
+
