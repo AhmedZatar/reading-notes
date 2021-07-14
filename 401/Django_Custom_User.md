@@ -1,283 +1,80 @@
-# Custom User Model
+# Hashtables
 
-However, for a real-world project, the official Django documentation highly recommends using a custom user model instead. This provides far more flexibility down the line so, as a general rule, always use a custom user model for all new Django projects.
+## What is a Hashtable?
 
-But how to implement one? The official documentation example is not actually what many Django experts recommend using. There is a far easier yet still powerful approach to starting off new Django projects with a custom user model which I'll demonstrate here.
+1. Hash - A hash is the result of some algorithm taking an incoming string and converting it into a value that could be used for either security or some other purpose. In the case of a hashtable, it is used to determine the index of the array.
+2. Buckets - A bucket is what is contained in each index of the array of the hashtable. Each index is a bucket. An index could potentially contain multiple key/value pairs if a collision occurs.
+3. Collisions - A collision is what happens when more than one key gets hashed to the same location of the hashtable.
 
-## Setup
-To start, create a new Django project from the command line. We need to do several things:
+## Why do we use them?
 
-* create and navigate into a dedicated directory called accounts for our code
-* install Django
-* make a new Django project called config
-* make a new app accounts
-* start the local web server
+1. Hold unique values
+2. Dictionary
+3. Library
 
-Here are the commands to run:
+## What Are they
 
-```
-$ cd ~/Desktop
-$ mkdir accounts && cd accounts
-$ pipenv install django~=3.1.0
-$ pipenv shell
-(accounts) $ django-admin.py startproject config .
-(accounts) $ python manage.py startapp accounts
-(accounts) $ python manage.py runserver
-```
+Hashtables are a data structure that utilize key value pairs. This means every Node or Bucket has both a key, and a value.
 
-Note that we did not run migrate to configure our database. It's important to wait until after we've created our new custom user model before doing so.
+The basic idea of a hashtable is the ability to store the key into this data structure, and quickly retrieve the value. This is done through what we call a hash. A hash is the ability to encode the key that will eventually map to a specific location in the data structure that we can look at directly to retrieve the value.
 
-If you navigate to http://127.0.0.1:8000 you’ll see the Django welcome screen.
+Since we are able to hash our key and determine the exact location where our value is stored, we can do a lookup in an O(1) time complexity. This is ideal when quick lookups are required.
 
-Sweet. For now, stop the local server with Control+c because otherwise it will start kicking off lots of errors as we implement a custom user model.
+### Example
 
-## AbstractUser vs AbstractBaseUser
-There are two modern ways to create a custom user model in Django: AbstractUser and AbstractBaseUser. In both cases we can subclass them to extend existing functionality however AbstractBaseUser requires much, much more work. Seriously, don't mess with it unless you really know what you're doing. And if you did, you wouldn't be reading this tutorial, would you?
+Let’s say we have data of Seattle neighborhood names and their corresponding zip codes.
 
-So we'll use AbstractUser which actually subclasses AbstractBaseUser but provides more default configuration.
+`["Greenwood:98103", "Downtown:98101", "Alki Beach:98116", "Bainbridge Island:98110", ...]`
 
-## Custom User Model
-Creating our initial custom user model requires four steps:
+Now, we want to be able to search through the data to look up a neighborhood and obtain it’s zip code. We could do this using a for loop that looks through each piece of data one by one until it finds the neighborhood name, then returns the zip code there. This would be an O(N) read operation because it requires searching through each piece of data to find the one piece we want.
 
-* update config/settings.py
-* create a new CustomUser model
-* create new UserCreation and UserChangeForm
-* update the admin
+Arrays actually have fast access. If we know the index of the information we want we can access that information in O(1) time. The reason why searching for a piece of data in a collection is O(N) isn’t because the array is slow, it’s just that we have to look through all N things in the collection.
 
-In settings.py we'll add the accounts app and use the AUTH_USER_MODEL config to tell Django to use our new custom user model in place of the built-in User model. We'll call our custom user model CustomUser.
+Hash maps take advantage of an array’s O(1) read access. Instead of adding elements to an array from beginning to end, a hash map uses a “hash function” to place each item at a precise index location, based off it’s key.
 
-Within INSTALLED_APPS add accounts at the bottom. Then at the bottom of the entire file, add the AUTH_USER_MODEL config.
+Basically, the hash function takes a key and returns an integer. We use the integer to determine where the key/value pair should be placed in the array. The hash code is calculated in constant time and writing to an array at one index is O(1) so the hash map has O(1) access.
 
-```
-# config/settings.py
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'accounts', # new
-]
-...
-AUTH_USER_MODEL = 'accounts.CustomUser' # new
-```
+The hash code is used again to read something from the hash map. Take the key, run it through the hash code to get a number, use that number to index the array. Calculating the hash code and reading an array at that index is all constant time to the hash map has O(1) read access!
 
-Now update accounts/models.py with a new User model which we'll call CustomUser.
 
-```
-# accounts/models.py
-from django.contrib.auth.models import AbstractUser
-from django.db import models
+## Structure
+### Hashing
+Basically, a hash code turns a key into an integer. It’s very important that hash codes are deterministic: their output is determined only by their input. Hash codes should never have randomness to them. The same key should always produce the same hash code.
 
-class CustomUser(AbstractUser):
-    pass
-    # add additional fields in here
+### Creating a Hash
 
-    def __str__(self):
-        return self.username
-```
+A hashtable traditionally is created from an array. I always like the size 1024. this is important for index placement. After you have created your array of the appropriate size, do some sort of logic to turn that “key” into a numeric number value. Here is a possible suggestion:
 
-We need new versions of two form methods that receive heavy use working with users. Stop the local server with Control+c and create a new file in the accounts app called forms.py.
+1. Add or multiply all the ASCII values together.
+2. Multiply it by a prime number such as 599.
+3. Use modulo to get the remainder of the result, when divided by the total size of the array.
+4. Insert into the array at that index.
 
-`(accounts) $ touch accounts/forms.py`
+### Collisions
+A collision occurs when more than one key hashes to the same index in an array. As mentioned earlier, a “perfect hash” will never have any collisions. To put this into perspective, the worst possible hash is one that hashes every single key to the same exact index of an array. The more keys you have hashed to a specific index, the more key/value pair combos you can potentially have.
 
-We'll update it with the following code to largely subclass the existing forms.
+What would happen if two different keys resolved to be the same index of the array? This is called a collision. The hash map needs to be able to handle two keys resolving to the same index.
 
-```
-# accounts/forms.py
-from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+If two keys ever ultimately resolved to the same index, then two calls to .Add(key, val) with different keys would overwrite each other.
 
-class CustomUserCreationForm(UserCreationForm):
+Collisions are solved by changing the initial state of the buckets. Instead of starting them all as null we can initialize a LinkedList in each one! Now if two keys resolve to the same index in the array then their key/value pairs can be stored as a node in a linked list. Each index in the array is called a “bucket” because it can store multiple key/value pairs.
 
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'email')
+Since different keys can lead to the same bucket it’s important to store the entire key/value pair in the bucket, not just the value. The key must be stored with the value! If only values were stored in buckets then it would be impossible to determine which value to return when a key led you to a bucket.
 
-class CustomUserChangeForm(UserChangeForm):
+This is similar to the original neighborhood names stored in an array with their zip codes shown earlier.
 
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'email')
-```
-
-Finally we update admin.py since the Admin is highly coupled to the default User model.
-
-```
-# accounts/admin.py
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-
-from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
-
-class CustomUserAdmin(UserAdmin):
-    add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
-    model = CustomUser
-    list_display = ['email', 'username',]
-
-admin.site.register(CustomUser, CustomUserAdmin)
-```
-
-And we're done! We can now run makemigrations and migrate for the first time to create a new database that uses the custom user model.
-
-```
-(accounts) $ python manage.py makemigrations accounts
-(accounts) $ python manage.py migrate
-```
-
-## Superuser
-It's helpful to create a superuser that we can use to log in to the admin and test out log in/log out. On the command line type the following command and go through the prompts.
-
-`(accounts) $ python manage.py createsuperuser`
-
-## Templates/Views/URLs
-Our goal is a homepage with links to log in, log out, and sign up. Start by updating settings.py to use a project-level templates directory.
-
-```
-# config/settings.py
-TEMPLATES = [
-    {
-        ...
-        'DIRS': [str(BASE_DIR.joinpath('templates'))], # new
-        ...
-    },
-]
-```
-
-Then set the redirect links for log in and log out, which will both go to our home template. Add these two lines at the bottom of the file.
-
-```
-# config/settings.py
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
-```
-
-Create a new project-level templates folder and within it a registration folder as that's where Django will look for the log in template. We will also put our signup.html template in there.
-
-```
-(accounts) $ mkdir templates
-(accounts) $ mkdir templates/registration
-```
-Then create four templates:
-
-```
-(accounts) $ touch templates/registration/login.html
-(accounts) $ touch templates/registration/signup.html
-(accounts) $ touch templates/base.html
-(accounts) $ touch templates/home.html
-```
-
-Update the files as follows:
-
-
-```
-<!-- templates/home.html -->
-{% extends 'base.html' %}
-
-{% block title %}Home{% endblock %}
-
-{% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a> |
-  <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-{% endblock %}
-```
-
-```
-<!-- templates/registration/login.html -->
-{% extends 'base.html' %}
-
-{% block title %}Log In{% endblock %}
-
-{% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
-{% endblock %}
-```
-
-```
-<!-- templates/registration/signup.html -->
-{% extends 'base.html' %}
-
-{% block title %}Sign Up{% endblock %}
-
-{% block content %}
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
-{% endblock %}
-```
-
-Now for our urls.py files at the project and app level.
-
-```
-# config/urls.py
-from django.contrib import admin
-from django.urls import path, include
-from django.views.generic.base import TemplateView
-
-urlpatterns = [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-]
-```
-
-Create a urls.py file in the accounts app.
-
-`(accounts) $ touch accounts/urls.py`
-
-Then fill in the following code:
-
-```
-# accounts/urls.py
-from django.urls import path
-from .views import SignUpView
-
-urlpatterns = [
-    path('signup/', SignUpView.as_view(), name='signup'),
-]
-```
-
-Last step is our views.py file in the accounts app which will contain our signup form.
-
-```
-# accounts/views.py
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
-
-from .forms import CustomUserCreationForm
-
-class SignUpView(CreateView):
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'registration/signup.html'
-```
-Now use the logout link and then click on signup.
-
-
-![0](https://learndjango.com/static/images/tutorials/custom_user_model/signup.png)
-
-## Conclusion
-
-Now that our custom user model is configured you can easily and at any time add additional fields to it. See the Django docs for further instructions.
-
-You can also check out DjangoX, which is an open-source Django starter framework that includes a custom user model, email/password by default instead of username/email/password, social authentication, and more.
+Here’s an actual example of just one bucket in a real hash map. In this example the two different keys "Pioneer Square" and "Alki Beach" happen to ultimately resolve to the same bucket. When we look at the bucket we see a representation of the Linked List that exists there. Pioneer Square was added first, so it’s at the front of the list. Then there’s Alki Beach as the second element in the linked list. Notice that both of them store the entire key/value pair.
 
+## Internal Methods
+
+* Add() When adding a new key/value pair to a hashtable:
+    1. send the key to the GetHash method.
+    2. Once you determine the index of where it should be placed, go to that index
+    3. Check if something exists at that index already, if it doesn’t, add it with the key/value pair.
+    4. If something does exist, add the new key/value pair to the data structure within that bucket.
+
+* Find() The Find takes in a key, gets the Hash, and goes to the index location specified. Once at the index location is found in the array, it is then the responsibility of the algorithm the iterate through the bucket and see if the key exists and return the value.
+
+* Contains() The Contains method will accept a key, and return a bool on if that key exists inside the hashtable. The best way to do this is to have the contains call the GetHash and check the hashtable if the key exists in the table given the index returned.
+
+* GetHash() The GetHash will accept a key as a string, conduct the hash, and then return the index of the array where the key/value should be placed.
