@@ -173,22 +173,6 @@ Then create four templates:
 
 Update the files as follows:
 
-```
-<!-- templates/base.html -->
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
-</head>
-<body>
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
-</body>
-</html>
-```
 
 ```
 <!-- templates/home.html -->
